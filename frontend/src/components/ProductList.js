@@ -11,7 +11,7 @@ function ProductList({ products }) {
         <ul className="product-list-items">
           {products.map((product) => (
             <li key={product._id} className="product-item">
-              <img src={product.imageUrl} alt={product.name} className="product-image" />
+              <img src={product.imageUrl} alt={product.name} className="product-image" style={{ width: '100%', height: 'auto' }} />
               <h4>{product.name}</h4>
               <p>{product.description}</p>
               <p>${product.price}</p>

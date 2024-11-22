@@ -14,45 +14,29 @@ router.get('/category/:categoryId', async (req, res) => {
   }
 });
 
-//Add product
-router.get('/add', async (req, res) => {
-  try {
-    const products = await Product.find({ category: req.params.categoryId });
-    res.json(products);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
+// Add product
 router.post('/add', async (req, res) => {
   try {
-    console.log("wo-1");
-      const { name, price, description, category } = req.body;
-      console.log("wo-2"+category+"<");
-      // Validate if the category exists
-      const existingCategory = await Category.findById(category);
-      console.log("wo-3");
-      if (!existingCategory) {
-        console.log("wo-4");
-          return res.status(400).json({ error: 'Category not found.' });
-      }
-      console.log("wo-5");
-      const newProduct = new Product({
-          name,
-          price,
-          description,
-          category, // Save the category as ObjectId
-          imageUrl:'/img'
-
-      });
-      console.log("wo-6");
-      await newProduct.save();
-      console.log("wo-7");
-      res.status(201).json({ message: 'Product added successfully', product: newProduct });
+    const { name, price, description, category } = req.body;
+    // Validate if the category exists
+    const existingCategory = await Category.findById(category);
+    if (!existingCategory) {
+      return res.status(400).json({ error: 'Category not found.' });
+    }
+    // Generate a random image URL
+    const randomImage = `https://picsum.photos/200/300?random=${Math.floor(Math.random() * 1000)}`;
+    const newProduct = new Product({
+        name,
+        price,
+        description,
+        category, // Save the category as ObjectId
+        imageUrl: randomImage // Use the generated random image URL
+    });
+    await newProduct.save();
+    res.status(201).json({ message: 'Product added successfully', product: newProduct });
   } catch (error) {
-    console.log("wo-8");
-    console.log(error);
-      res.status(500).json({ error: 'Failed to add product' });
+    console.error(error);
+    res.status(500).json({ error: 'Failed to add product' });
   }
 });
 
