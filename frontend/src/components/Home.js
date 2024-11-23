@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CategoryList from './CategoryList';
 import ProductList from './ProductList';
-import './Home.css';  // Importing App-specific global styles
+  // Importing App-specific global styles
 
 function Home() {
   const [categories, setCategories] = useState([]);
@@ -39,7 +39,7 @@ function Home() {
   }, [selectedCategory]);
 
   return (
-    <div className="app-container">
+    <div className="app-container flex items-center ">
       <CategoryList categories={categories} setSelectedCategory={setSelectedCategory} />
       <ProductList products={products} />
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css';  // Importing the Login CSS
+  // Importing the Login CSS
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,11 +24,11 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container h-[80.5vh] w-full py-5 text-gray-800 px-10">
+      <h2 className="text-2xl text-white font-bold mb-4">Login</h2>
+      <form className='flex flex-col gap-4 items-center justify-center ' onSubmit={handleSubmit}>
         <div>
-          <input
+          <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
             type="email"
             placeholder='Enter your email'
             value={email}
@@ -37,7 +37,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <input
+          <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
             type="password"
             placeholder='Enter your Password'
             value={password}
@@ -46,12 +46,13 @@ const Login = () => {
           />
         </div>
         {error && <p className="error">{error}</p>}
-        <button type="submit">Login</button>
+        <button className='p-4  rounded-md outline-none bg-gray-700 text-white' type="submit">Login</button>
       </form>
-      <p>
-        Don't have an account? <Link to={'/registration'}>Register</Link>
+      <p className="text-gray-600 text-center mt-4">
+        Don't have an account? <Link className="text-blue-500 hover:text-blue-700" to={'/registration'}>Register</Link>
         {/*<a href="/register">Register</a>*/}
       </p>
+      
     </div>
   );
 };

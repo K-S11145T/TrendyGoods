@@ -1,10 +1,10 @@
 import React from 'react';
-import './CategoryList.css';  // Importing specific CSS for CategoryList
+ // Importing specific CSS for CategoryList
 
 function CategoryList({ categories, setSelectedCategory }) {
   return (
-    <div className="category-list">
-      <h3>Categories</h3>
+    <div className=" h-screen p-10 border-r border-gray-700 w-1/4 ">
+      <h3 className="text-2xl font-semibold mb-4">Categories</h3>
       <ul>
         {categories.map((category) => (
           <li key={category._id} onClick={() => setSelectedCategory(category._id)}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Register.css';  // Importing the Register CSS
+  // Importing the Register CSS
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -29,12 +29,12 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="register-container h-[80.5vh] w-full py-5 text-gray-800 px-10">
+      <h2 className="text-2xl text-white font-bold mb-4">Register</h2>
+      <form className='flex flex-col gap-4 items-center justify-center ' onSubmit={handleSubmit}>
         <div>
         
-          <input
+          <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100' 
             type="email"
             placeholder='Email Id'
             value={email}
@@ -44,7 +44,7 @@ const Register = () => {
         </div>
         <div>
          
-          <input
+          <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
             type="password"
             placeholder='Password'
             value={password}
@@ -53,7 +53,7 @@ const Register = () => {
           />
         </div>
         <div>
-          <input
+          <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100' 
             type="password"
             placeholder='Confirm Password'
             value={confirmPassword}
@@ -62,10 +62,10 @@ const Register = () => {
           />
         </div>
         {error && <p className="error">{error}</p>}
-        <button type="submit">Register</button>
+        <button className='p-4  rounded-md outline-none bg-gray-700 text-white' type="submit">Register</button>
       </form>
-      <p>
-        Already have an account? <a href="/login">Login</a>
+      <p className="text-gray-600 text-center mt-4">
+        Already have an account? <a href="/login" className="text-blue-500 hover:text-blue-700">Login</a>
       </p>
     </div>
   );

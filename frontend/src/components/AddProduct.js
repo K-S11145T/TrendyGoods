@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './AddProduct.css';
+
 
 function AddProduct() {
     const [product, setProduct] = useState({
@@ -57,58 +57,49 @@ function AddProduct() {
     };
 
     return (
-        <div className="container">
-            <h1>Add Product</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Product Name:</label>
-                    <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={product.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="price">Price:</label>
-                    <input
-                        id="price"
-                        name="price"
-                        type="number"
-                        value={product.price}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        value={product.description}
-                        onChange={handleChange}
-                    ></textarea>
-                </div>
-                <div>
-                    <label htmlFor="category">Category:</label>
-                    <select
-                        id="category"
-                        name="category"
-                        value={product.category}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">Select a category</option>
-                        {categories.map((category) => (
-                            <option key={category._id} value={category._id}>
-                                {category.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <button type="submit" disabled={isLoading}>
+        <div className="container h-[80.5vh] w-full py-5 text-gray-800 px-10 flex flex-col items-center justify-center">
+            <h1 className='text-2xl text-white font-bold mb-4'>Add Product</h1>
+            <form className='flex flex-col gap-4 items-center justify-center' onSubmit={handleSubmit}>
+                <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={product.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Enter product name"
+                />
+                <input className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
+                    id="price"
+                    name="price"
+                    type="number"
+                    value={product.price}
+                    onChange={handleChange}
+                    required
+                    placeholder="Enter price"
+                />
+                <textarea className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
+                    id="description"
+                    name="description"
+                    value={product.description}
+                    onChange={handleChange}
+                    placeholder="Enter description"
+                ></textarea>
+                <select className='p-2 w-[30vw] rounded-md outline-none border-2 border-gray-300 bg-gray-100'
+                    id="category"
+                    name="category"
+                    value={product.category}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Select a category</option>
+                    {categories.map((category) => (
+                        <option key={category._id} value={category._id}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+                <button className='p-4 rounded-md outline-none bg-gray-700 text-white' type="submit" disabled={isLoading}>
                     {isLoading ? 'Adding...' : 'Add Product'}
                 </button>
             </form>
